@@ -7,7 +7,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+canvas {
+  border: 1px dotted red;
+}
+
+.chart-container {
+  position: relative;
+  margin: 5px;
+  height: 50vh;
+  width: 80vw;
+}
+
+.greyBtn {
+  background-color: rgba(145, 145, 145);
+}
+
+.pinkBtn {
+  background-color: rgba(255, 99, 132);
 }
