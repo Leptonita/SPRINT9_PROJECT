@@ -73,10 +73,23 @@ margin: 10px auto;
 export const DivAveragePrice = styled.div`
 min-width: 235px;
 text-align: center;
-color:white;
+color: rgb(255, 99, 132);
+
 border: 1px solid rgba(255, 99, 132, 0.2); 
-background-color: rgb(255, 99, 132);
+background-color: rgba(255, 99, 132,0.3);
 margin: 5px 0.1px;
 padding: 5px 10px;
+`;
+
+export const DivMinPrice = styled(DivAveragePrice)`
+min-width: 280px;
+color:white;
+background-color: rgba(255, 99, 132,0.7);
+`;
+
+export const DivMaxPrice = styled(DivAveragePrice)`
+color:white;
+min-width: 280px;
+background-color: rgba(255, 99, 132,1);
 `;
 

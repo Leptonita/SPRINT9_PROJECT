@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
 import { LinesChart } from './LinesChart';
 import { BarChart } from './BarChart';
-import { BtnChartsSel, LinesBtnSel, BarBtnSel, DivChart, DivBtnDay, BtnDays, DivTxt, DivAveragePrice } from './PvpcToday-styled';
+import { BtnChartsSel, LinesBtnSel, BarBtnSel, DivChart, DivBtnDay, BtnDays, DivTxt, DivAveragePrice, DivMinPrice, DivMaxPrice } from './PvpcToday-styled';
 
 import { beforeDayYMD, toDayYMD, nowHour, nowMinutes, tomorroyYMD } from '../utils/time';
 
 const PvpcToday = () => {
-
+    const [arrObjsDaily, setArrObjDaily] = useState([]);
     const [priceHours, setPriceHours] = useState([0]);
     const [dayChart, setDayChart] = useState(toDayYMD());
     const [averagePrice, setAveragePrice] = useState(0);
     const [minPrice, setMinPrice] = useState(0);
+    const [minPriceHour, setMinPriceHour] = useState(null);
     const [maxPrice, setMaxPrice] = useState(0);
+    const [maxPriceHour, setMaxPriceHour] = useState(null);
     const [isBarsChart, setIsBarsChart] = useState(true);
     //isActive 0 tomorroy, 1 today, 2 yesterday, ...
     const [isActive, setIsActive] = useState([false, true, false, false, false, false]);
@@ -26,16 +28,22 @@ const PvpcToday = () => {
     const URL_REE = `https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=${dayChart}T00:00&end_date=${dayChart}T23:59&time_trunc=hour&geo_limit=peninsular&geo_ids=8741`
 
     useEffect(() => {
-        fetch(URL_REE)
-            .then(res => res.json())
-            .then(res => {
-                console.log({ res })
-                const arrObjsDailyPricesHours = res.included[0].attributes.values
-                console.log({ arrObjsDailyPricesHours });
-                const pricePerHour = arrObjsDailyPricesHours.map(objHour => Number(objHour.value))
-                setPriceHours(pricePerHour);
-            })
-            .catch(err => console.log('error: ', err.message))
+        async function startFetching() {
+            await fetch(URL_REE)
+                .then(res => res.json())
+                .then(res => {
+                    console.log({ res })
+                    const arrObjsDailyPricesHours = res.included[0].attributes.values
+                    console.log({ arrObjsDailyPricesHours });
+                    hourOfPrice(arrObjsDailyPricesHours);
+                    setArrObjDaily(() => [...arrObjsDailyPricesHours]);
+                    const pricePerHour = arrObjsDailyPricesHours.map(objHour => Number(objHour.value));
+                    setPriceHours(pricePerHour);
+                })
+                .catch(err => console.log('error: ', err.message))
+        }
+        startFetching();
+
     }, [dayChart]);
 
     useEffect(() => {
@@ -44,7 +52,7 @@ const PvpcToday = () => {
 
     useEffect(() => {
         averagePriceDay();
-        maxMinPrice()
+        //maxMinPrice();      
     }, [priceHours]);
 
     const averagePriceDay = () => {
@@ -52,12 +60,44 @@ const PvpcToday = () => {
         setAveragePrice(totalSum / 24);
     }
 
+    /* good only price
     const maxMinPrice = () => {
         //const copyArrPrices = JSON.parse(JSON.stringify(priceHours))
         const orderedPricesArr = JSON.parse(JSON.stringify(priceHours)).sort((a, b) => { return a - b });
         console.log({ orderedPricesArr })
         setMaxPrice(orderedPricesArr[orderedPricesArr.length - 1]);
         setMinPrice(orderedPricesArr[0]);
+    } */
+    const getDayNumber = (numTDay) => {
+        const dayArr = numTDay.split("T")
+        const dayT = dayArr[1];
+        const dayNum = dayT.substr(0, 2);
+        return dayNum;
+    }
+
+    const hourOfPrice = async (arr) => {
+        //arrObjsDaily
+        console.log({ arr });
+        const copyArrObjsDaily = await JSON.parse(JSON.stringify(arr));
+
+        const orderedArr = await copyArrObjsDaily.sort((a, b) => {
+            //console.log("a, b", typeof a.value, typeof b.value)
+            return a.value - b.value
+        });
+
+        const max = orderedArr[orderedArr.length - 1];
+        //const maxP = max.value;
+        await setMaxPrice(max.value);
+
+        const maxT = max.datetime;
+        const maxDay = getDayNumber(maxT);
+        setMaxPriceHour(maxDay + " - " + (Number(maxDay) + 1));
+
+        const min = orderedArr[0];
+        await setMinPrice(min.value);
+        const minT = min.datetime;
+        const minDay = getDayNumber(minT);
+        setMinPriceHour(minDay + " - " + (Number(minDay) + 1));
     }
 
     const colorBtnDay = (e) => {
@@ -108,8 +148,8 @@ const PvpcToday = () => {
                 </DivBtnDay>
                 <br />
                 <DivAveragePrice>Precio medio: {averagePrice.toFixed(2)}€/MWh </DivAveragePrice>
-                <DivAveragePrice>Precio mínimo: {minPrice.toFixed(2)}€/MWh </DivAveragePrice>
-                <DivAveragePrice>Precio máximo: {maxPrice.toFixed(2)}€/MWh </DivAveragePrice>
+                <DivMinPrice>Precio mínimo ({minPriceHour}h): {minPrice.toFixed(2)}€/MWh </DivMinPrice>
+                <DivMaxPrice>Precio máximo ({maxPriceHour}h): {maxPrice.toFixed(2)}€/MWh </DivMaxPrice>
             </DivChart >
             <DivTxt>
                 Los precios (€/MWh) fluctúan según las fracciones horarias{/* . Para <strong>{dayChart}</strong>, a nivel peninsular,*/}  de acuerdo a la tarifa regulada PVPC (Precio voluntario para el pequeño consumidor) del mercado eléctrico español. Estos datos han sido proporcionados por REE.
