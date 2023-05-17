@@ -38,6 +38,7 @@ align-items: center;
 
 export const DivBtnDay = styled.div`
 display: flex;
+flex-wrap: wrap;
 justify-content: center;
 align-items: center;
 `;
@@ -51,9 +52,31 @@ margin: 5px;
 padding: 5px 10px;
 cursor: pointer;
 transition: all 0.5s ease;
+${props => props.isSelected && css`
+    color:white;
+    background-color: rgba(255, 99, 132, 1);
+  `}
 &:hover {
     color:white;
-    background-color: rgba(255, 99, 132, 0.9);
+    background-color: rgba(255, 99, 132, 0.7);
 }
+`;
+
+export const DivTxt = styled.div`
+width: 78%;
+font-size: 0.8rem;
+border: 1px dotted red;
+padding: 10px;
+margin: 10px auto;
+`;
+
+export const DivAveragePrice = styled.div`
+min-width: 235px;
+text-align: center;
+color:white;
+border: 1px solid rgba(255, 99, 132, 0.2); 
+background-color: rgb(255, 99, 132);
+margin: 5px 0.1px;
+padding: 5px 10px;
 `;
 
