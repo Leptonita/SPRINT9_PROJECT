@@ -53,6 +53,12 @@ const NavBarMenu = () => {
                     to="/pvpc">
                     <LiMenu> PVPC</LiMenu>
                 </NavbarLink>
+                <NavbarLink
+                    style={{
+                    }}
+                    to="/calculadora">
+                    <LiMenu> CALCULADORA</LiMenu>
+                </NavbarLink>
             </UlMenu >
             {modalState && < Login
                 modalVis={modalState} changeModalVis={setModalState}
