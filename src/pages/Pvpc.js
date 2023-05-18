@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { LinesChart } from './LinesChart';
-import { BarChart } from './BarChart';
-import { BtnChartsSel, LinesBtnSel, BarBtnSel, DivChart, DivBtnDay, BtnDays, DivTxt, DivAveragePrice, DivMinPrice, DivMaxPrice } from './PvpcToday-styled';
+import { LinesChart } from '../components/LinesChart';
+import { BarChart } from '../components/BarChart';
+import { BtnChartsSel, LinesBtnSel, BarBtnSel, DivChart, DivBtnDay, BtnDays, DivTxt, DivAveragePrice, DivMinPrice, DivMaxPrice } from './Pvpc-styled';
 
 import { beforeDayYMD, toDayYMD, nowHour, nowMinutes, tomorroyYMD } from '../utils/time';
 
@@ -148,8 +148,8 @@ const PvpcToday = () => {
                 </DivBtnDay>
                 <br />
                 <DivAveragePrice>Precio medio: {averagePrice.toFixed(2)}€/MWh </DivAveragePrice>
-                <DivMinPrice>Precio mínimo ({minPriceHour}h): {minPrice.toFixed(2)}€/MWh </DivMinPrice>
-                <DivMaxPrice>Precio máximo ({maxPriceHour}h): {maxPrice.toFixed(2)}€/MWh </DivMaxPrice>
+                <DivMinPrice>Mínimo de <strong>{minPriceHour}h</strong>: {minPrice.toFixed(2)}€/MWh </DivMinPrice>
+                <DivMaxPrice>Máximo de <strong>{maxPriceHour}h</strong>: {maxPrice.toFixed(2)}€/MWh </DivMaxPrice>
             </DivChart >
             <DivTxt>
                 Los precios (€/MWh) fluctúan según las fracciones horarias{/* . Para <strong>{dayChart}</strong>, a nivel peninsular,*/}  de acuerdo a la tarifa regulada PVPC (Precio voluntario para el pequeño consumidor) del mercado eléctrico español. Estos datos han sido proporcionados por REE.

@@ -84,7 +84,7 @@ padding: 5px 10px;
 export const DivMinPrice = styled(DivAveragePrice)`
 min-width: 280px;
 color:white;
-background-color: rgba(255, 99, 132,0.7);
+background-color: rgb(92, 180, 72);
 `;
 
 export const DivMaxPrice = styled(DivAveragePrice)`
