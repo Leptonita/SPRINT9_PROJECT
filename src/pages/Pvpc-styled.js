@@ -1,5 +1,10 @@
 import styled, { css } from "styled-components";
 
+export const DivPvpc = styled.div`
+width: 100%;
+margin-top: 20px;
+`;
+
 export const BtnChartsSel = styled.div`
 width: 80%;
 display: flex;

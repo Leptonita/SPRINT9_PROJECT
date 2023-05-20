@@ -22,10 +22,10 @@ const NavBar = () => {
                 setLoginIsClicked={setLoginIsClicked} setSignupIsClicked={setSignupIsClicked}
                 setModalState={setModalState}
             />
-            <NavBarMenu loginIsClicked={!logged} signupIsClicked={!logged} modalState={!logged} git
+            {/* <NavBarMenu loginIsClicked={!logged} signupIsClicked={!logged} modalState={!logged} git
                 setLoginIsClicked={setLoginIsClicked} setSignupIsClicked={setSignupIsClicked}
                 setModalState={setModalState}
-            />
+            /> */}
         </DivHeader >
     )
 }

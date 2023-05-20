@@ -3,11 +3,11 @@ import Provider from './application/Provider';
 
 function App() {
   return (
-    <div>
-      <Provider>
-        <Routes />
-      </Provider>
-    </div>
+
+    <Provider>
+      <Routes />
+    </Provider>
+
   );
 }
 

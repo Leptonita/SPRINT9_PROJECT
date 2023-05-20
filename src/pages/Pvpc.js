@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { LinesChart } from '../components/LinesChart';
 import { BarChart } from '../components/BarChart';
-import { BtnChartsSel, LinesBtnSel, BarBtnSel, DivChart, DivBtnDay, BtnDays, DivTxt, DivAveragePrice, DivMinPrice, DivMaxPrice } from './Pvpc-styled';
+import { DivPvpc, BtnChartsSel, LinesBtnSel, BarBtnSel, DivChart, DivBtnDay, BtnDays, DivTxt, DivAveragePrice, DivMinPrice, DivMaxPrice } from './Pvpc-styled';
 
 import { beforeDayYMD, toDayYMD, nowHour, nowMinutes, tomorroyYMD } from '../utils/time';
+import { useMyContext } from '../application/Provider';
+
 
 const PvpcToday = () => {
+    const [state, setState] = useMyContext();
     const [arrObjsDaily, setArrObjDaily] = useState([]);
     const [priceHours, setPriceHours] = useState([0]);
     const [dayChart, setDayChart] = useState(toDayYMD());
@@ -23,12 +26,16 @@ const PvpcToday = () => {
     const [fourDaysAgo, setFourDaysAgo] = useState(() => beforeDayYMD(4));
 
     const nowTime = Number(nowHour()) + Number(nowMinutes() / 60);
-
+    /* const averagePriceDay = () => {
+        const totalSum = priceHours.reduce((total, price) => total + price);
+        setAveragePrice(totalSum / 24);
+        //setState({ ...state, averagePriceDay: averagePrice });
+    } */
 
     const URL_REE = `https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=${dayChart}T00:00&end_date=${dayChart}T23:59&time_trunc=hour&geo_limit=peninsular&geo_ids=8741`
 
     useEffect(() => {
-        async function startFetching() {
+        /* async function startFetching() {
             await fetch(URL_REE)
                 .then(res => res.json())
                 .then(res => {
@@ -41,24 +48,48 @@ const PvpcToday = () => {
                     setPriceHours(pricePerHour);
                 })
                 .catch(err => console.log('error: ', err.message))
-        }
-        startFetching();
+        } */
 
+        async function startFetching(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error("problemas de conexión. 'Network response was not ok' ");
+                }
+                const data = await response.json();
+                const arrObjsDailyPricesHours = data.included[0].attributes.values
+                //console.log({ arrObjsDailyPricesHours });
+                hourOfPrice(arrObjsDailyPricesHours);
+                setArrObjDaily(() => [...arrObjsDailyPricesHours]);
+                const pricePerHour = arrObjsDailyPricesHours.map(objHour => Number(objHour.value));
+                setPriceHours(pricePerHour);
+                const totalSum = pricePerHour.reduce((total, price) => total + price);
+                setAveragePrice(totalSum / 24);
+            }
+            catch (err) { console.log('error: ', err.message) }
+        }
+        startFetching(URL_REE);
     }, [dayChart]);
 
     useEffect(() => {
         setIsActive(isActive);
     }, [dayChart]);
 
+    /* funcionaba para calcular la media
     useEffect(() => {
         averagePriceDay();
         //maxMinPrice();      
-    }, [priceHours]);
+    }, [priceHours]); */
 
-    const averagePriceDay = () => {
-        const totalSum = priceHours.reduce((total, price) => total + price);
-        setAveragePrice(totalSum / 24);
-    }
+
+
+
+
+    useEffect(() => {
+        // averagePriceDay();
+        setState({ ...state, averagePriceDay: averagePrice, maxPriceDay: maxPrice, minPriceDay: minPrice });
+
+    }, [dayChart, priceHours]);
 
     /* good only price
     const maxMinPrice = () => {
@@ -98,6 +129,7 @@ const PvpcToday = () => {
         const minT = min.datetime;
         const minDay = getDayNumber(minT);
         setMinPriceHour(minDay + " - " + (Number(minDay) + 1));
+        //await setState({ ...state, maxPriceDay: maxPrice, minPriceDay: minPrice });
     }
 
     const colorBtnDay = (e) => {
@@ -117,12 +149,13 @@ const PvpcToday = () => {
 
     const calcDay = (day, e) => {
         setDayChart(day);
-        averagePriceDay();
+        // averagePriceDay();
         colorBtnDay(e);
     }
 
+    console.log({ state });
     return (
-        <div>
+        <DivPvpc>
             <DivChart>
                 <BtnChartsSel>
                     <LinesBtnSel onClick={() => setIsBarsChart(false)}
@@ -154,7 +187,7 @@ const PvpcToday = () => {
             <DivTxt>
                 Los precios (€/MWh) fluctúan según las fracciones horarias{/* . Para <strong>{dayChart}</strong>, a nivel peninsular,*/}  de acuerdo a la tarifa regulada PVPC (Precio voluntario para el pequeño consumidor) del mercado eléctrico español. Estos datos han sido proporcionados por REE.
             </DivTxt>
-        </div >
+        </DivPvpc >
     )
 }
 export default PvpcToday;

@@ -1,9 +1,11 @@
 import { useState } from 'react';
-//import logo from '../assets/img/sw_logo.webp';
+import logo from '../assets/img/emwhat.png';
 import { DivBarGridLogin, DivImg, LogoImg, DivLoginRight, DivLogin, DivLoginLeft, DivLoginLeftLinks, LinkIds, SpanLogin, MenuMobile, DivUser } from './NavBar-styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Login from './Login';
+
+import { UlMenu, LiMenu, NavbarLink } from './NavBar-styled';
 
 import { useMyContext } from '../application/Provider';
 
@@ -32,6 +34,9 @@ const NavBarLogin = () => {
     return (
 
         <DivBarGridLogin>
+            <DivImg>
+                <LogoImg src={logo} alt="eMWcalc" />
+            </DivImg>
             <DivLoginLeft>
                 <MenuMobile>
                     <FontAwesomeIcon onClick={() => { setIsActive(!isActive) }} icon={faBars} size="2xl" style={{ color: "#ffea00", }} />
@@ -58,9 +63,29 @@ const NavBarLogin = () => {
                 )}
 
             </DivLoginLeft>
-            <DivImg>
-                Logo
-            </DivImg>
+
+            <UlMenu>
+                <NavbarLink
+                    style={{
+                    }}
+                    to="/">
+                    <LiMenu> HOME </LiMenu>
+                </NavbarLink>
+
+                <NavbarLink
+                    style={{
+                    }}
+                    to="/pvpc">
+                    <LiMenu> PVPC</LiMenu>
+                </NavbarLink>
+                <NavbarLink
+                    style={{
+                    }}
+                    to="/calculadora">
+                    <LiMenu> CALCULADORA</LiMenu>
+                </NavbarLink>
+            </UlMenu >
+
             <DivLoginRight>
                 <DivLogin>
                     <SpanLogin onClick={showModalLogin}>LOG IN </SpanLogin>
@@ -81,6 +106,7 @@ const NavBarLogin = () => {
                 </DivLogin>
                 <DivUser> {userLogged ? "user: " + userLogged : "no access"}</DivUser>
             </DivLoginRight>
+            <br />
         </DivBarGridLogin>
     )
 }

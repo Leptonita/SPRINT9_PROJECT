@@ -3,33 +3,26 @@ import styled from "styled-components";
 import { NavLink } from 'react-router-dom';
 
 const greyBorder = "#4f4f4f";
+const pinkyBorder = "rgba(255, 99, 132, 0.2)";
+const pinky = "rgba(255, 99, 132, 1)";
+const greeny = "#00a98c";
+const greenyHover = "#008973";
+const yellowy = "#ffb91d";
 
-/* export const DivBar = styled.div`
-display: flex;
-height: 130px;
-align-items: center;
-justify-content: flex-end;
-color: #d9d9d9;
-background-image: url(${logo});
-background-repeat: no-repeat;
-background-position: center;
-background-size: 210px;
-padding: 20px 40px
-`; */
 
 export const DivHeader = styled.div`
- width: 98vw; 
 color: #adadad;
-margin-left: 5px;
-
 `;
 
 export const DivBarGridLogin = styled.div`
 display: grid;
-height: 130px;
-grid-template-columns: 1fr 1fr 1fr ;
+height: 105px;
+grid-template-columns: 1fr 1fr 1fr 1fr ;
 align-items: center;
-padding: 20px 30px;
+padding: 10px 30px;
+background-color: rgba(255,185,29,0.67);
+border-bottom: 2px solid ${pinkyBorder};
+box-shadow: 2px 2px 9px gray;
 @media(max-width: 768px) {
     padding: 20px;
   }
@@ -65,11 +58,6 @@ display:none;
 `;
 
 export const DivLoginRight = styled.div`
-/* display: grid;
-grid-template-columns: 1fr;
-justify-items: end;
-align-items: start; */
-
 display: flex;
 flex-direction: column;
 justify-content: flex-end;
@@ -99,8 +87,9 @@ margin-left: auto;
 
 export const LinkIds = styled.span`
 cursor: pointer;
+color: gray;
 &:hover {
-  color: #fff;  
+  color: ${greeny};  
   text-shadow: 2px 2px 5px rgb(255, 255, 255, 0.7);
 }
 `;
@@ -127,9 +116,8 @@ margin-left: auto;
 export const UlMenu = styled.ul`
 width: 100%;
 margin: 20px 0;
-/* border-top: 2px solid ${greyBorder}; */
-border-bottom: 2px solid ${greyBorder};
-
+font-size: 1.3rem;
+font-weight: 600;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -138,6 +126,8 @@ list-style-type: none;
 
 export const LiMenu = styled.li`
 padding: 15px 25px;
+color:${greeny};
+  transition: all 0.2s ease-in-out;
 /* border-right: 2px solid ${greyBorder};
 &:first-child {
     border-left: 2px solid ${greyBorder};
@@ -146,12 +136,12 @@ padding: 15px 25px;
 &:hover {
     /* border-bottom: 4px solid white; 
     margin-bottom: -4px;*/
-    color: #fff;    
+    color: ${greenyHover};
     z-index: 10;
-    text-shadow: 2px 2px 5px rgb(255, 255, 255, 0.7);
+    text-shadow: 2px 2px 5px rgba(255, 255, 140, 0.7);
 }
  &:active{
-    color: #ebe7d0d2;
+    color: ${pinky};
     box-shadow: 2px 2p 2px #fffaded2;
 }; 
 `;
@@ -164,9 +154,10 @@ text-decoration: none;
 `;
 
 export const DivUser = styled.div`
+font-size: 0.7rem;
 display: flex;
 flex-flow: row wrap;
-text-align: right;
+text-align: center;
 margin-right: 20px;
 margin-left: auto;
 color: #555555;
