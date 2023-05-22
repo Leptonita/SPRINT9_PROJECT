@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 import PrivateRoute from '../components/PrivateRoute';
-import Pvpc from '../pages/Pvpc';
+import PvpcCharts from '../pages/PvpcCharts';
+import PvpcDays from '../pages/PvpcDays';
 import Home from '../pages/Home';
 import ErrPage from '../pages/ErrPage';
 import Calculadora from '../pages/Calculadora';
@@ -11,7 +12,7 @@ const Router = () => (
         <Routes>
             <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
-                <Route path="pvpc" element={<Pvpc />} />
+                <Route path="pvpc" element={<PvpcCharts />} />
                 <Route exact path="calculadora" element={<PrivateRoute component={Calculadora} />} />
                 <Route path="*" element={<ErrPage />} />
             </Route>
@@ -25,7 +26,12 @@ const Layout = () => {
     return (
         <>
             <NavBar />
-            <Outlet />
+            <div className='contentGrid'>
+
+                <Outlet />
+                <PvpcDays />
+            </div>
+
         </>
     )
 }

@@ -1,11 +1,27 @@
 import styled, { css } from "styled-components";
 
-export const DivCalc = styled.div`
-width: 500px;
-border: 1px dotted red;
-margin: 50px;
-padding: 30px;
+export const DivContent = styled.div`
+width: 80%;
+margin: 10px auto;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
 `;
+
+export const DivCalc = styled.div`
+  width: 70vw;
+max-width: 750px;
+border: 1px dotted red;
+margin: 30px 10px 10px 0;
+padding: 30px;
+background-image: url(${require(`../assets/img/earn-money-internet-vectorportal.png`)});
+background-size: 50%;
+background-repeat: no-repeat;
+background-position: right bottom;
+`;
+
 export const CenteredDiv = styled.div`
 width: 100%;
 display: flex;
