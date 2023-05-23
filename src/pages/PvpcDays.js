@@ -114,7 +114,7 @@ const PvpcDays = () => {
         colorBtnDay(e);
     }
 
-    console.log({ state });
+    //console.log({ state });
     return (
         <DivPvpcDays>
             <DivBtnDay>
@@ -129,13 +129,13 @@ const PvpcDays = () => {
             <br />
             <DivAveragePrice><strong>Precio medio:</strong>
                 <br />
-                {averagePrice.toFixed(2)}€/MWh </DivAveragePrice>
+                {averagePrice.toFixed(2)} €/MWh </DivAveragePrice>
             <DivMinPrice>Mínimo de <strong>{minPriceHour}h</strong>:
                 <br />
-                {minPrice.toFixed(2)}€/MWh </DivMinPrice>
+                {minPrice.toFixed(2)} €/MWh </DivMinPrice>
             <DivMaxPrice>Máximo de <strong>{maxPriceHour}h</strong>:
                 <br />
-                {maxPrice.toFixed(2)}€/MWh </DivMaxPrice>
+                {maxPrice.toFixed(2)} €/MWh </DivMaxPrice>
         </DivPvpcDays >
     )
 }

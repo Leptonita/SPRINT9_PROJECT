@@ -30,7 +30,7 @@ const PvpcCharts = () => {
     const URL_REE = `https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=${dayChart}T00:00&end_date=${dayChart}T23:59&time_trunc=hour&geo_limit=peninsular&geo_ids=8741`
 
 
-    console.log({ state });
+    // console.log({ state });
     return (
         <DivPvpc>
             <DivChart>

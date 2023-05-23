@@ -84,10 +84,16 @@ const NavBarLogin = () => {
                     to="/calculadora">
                     <LiMenu> CALCULADORA</LiMenu>
                 </NavbarLink>
+                <NavbarLink
+                    style={{
+                    }}
+                    to="/login">
+                    <LiMenu> LOGIN</LiMenu>
+                </NavbarLink>
             </UlMenu >
 
             <DivLoginRight>
-                <DivLogin>
+                {/* <DivLogin>
                     <SpanLogin onClick={showModalLogin}>LOG IN </SpanLogin>
                     {loginIsClicked &&
                         <Login
@@ -103,8 +109,8 @@ const NavBarLogin = () => {
                             modalLog={loginIsClicked} changeLogClick={setLoginIsClicked}
                             modalSign={signupIsClicked} changeSignClick={setSignupIsClicked}
                         />}
-                </DivLogin>
-                <DivUser> {userLogged ? "user: " + userLogged : "no access"}</DivUser>
+                </DivLogin> */}
+                <DivUser> {userLogged ? "usuario: " + userLogged : ""}</DivUser>
             </DivLoginRight>
             <br />
         </DivBarGridLogin>

@@ -20,7 +20,7 @@ const Calculadora = () => {
         <DivContent>
             <DivCalc>
                 <CenteredDiv>
-                    <h1>    Calculadora</h1>
+                    <h1>    Calculadora energética</h1>
 
                 </CenteredDiv>
                 <br />

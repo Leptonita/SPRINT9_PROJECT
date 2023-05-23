@@ -6,22 +6,24 @@ const colors = {
     lines: "#adadad",
     error: "#db1212",
     success: "#16d426",
-    greyBorder: "#4f4f4f"
+    greyBorder: "#dd8500",
+    greenish: "rgb(0, 169, 140)",
+    yellowish: "rgb(255, 185, 29)"
 }
 
 
 //Web info modal
 export const OverlayLogin = styled.div`
- position: fixed;
-z-index: 10;
-top: 0;
-left: 0;
-width: 100vw;
+ /* position: fixed;
+z-index: 10; 
 height: 100vh;
 background: rgba(114, 114, 114, 0.3);
+
+*/
+top: 0;
+left: 0;
+width: 90vw;
 display: flex;
-/* display: ${(props) => props.isVisible ? 'flex' : 'none'}; */
-align-items: center;
 justify-content:  center; /**/
 `;
 
@@ -64,9 +66,9 @@ position: relative;
 width: 500px;
 border: 2px solid ${colors.greyBorder};
 border-radius: 5px;
-margin-top: -30px;
+margin-top: 20px;
 padding: 30px 40px;
-background-color: #001;
+background-color: #149458;
 
 @media(max-width: 768px) {
     width: 90%;
@@ -120,7 +122,7 @@ border: 3px solid ${colors.error} ;
 
 export const ErrorMessage = styled.div`
 font-size: 12px;
-color: ${colors.error};
+color: ${colors.lines};
 visibility: hidden;
 ${props => props.valid && css`
 //visibility: hidden;
@@ -146,13 +148,35 @@ font-weight: bold;
 background-color: ${colors.greyBorder};
 border: 2px solid ${colors.lines};
 color: white;
-border-radius: 5px;
+border-radius: 25px;
 transition: all 0.5s ease-in-out;
 cursor: pointer;
 
 &:hover{
-    background-color: ${colors.lines};
+    background-color: ${colors.yellowish};
     border: 1px solid ${colors.greyBorder};
     color: black;
 }
 `;
+
+export const BtnNewAcc = styled(BtnsIds)`
+background-color: #b7ff0071;
+`;
+
+export const DivTxtPw = styled.div`
+margin: 3px 0 1px 1px;
+font-size: 0.8rem;
+	color: #b7ff00;
+`;
+
+export const DivMessage = styled.div`
+	color: yellow;
+    text-align: center;
+`;
+
+export const DivTxt = styled.div`
+margin: 5px 20px;
+font-size: 0.8rem;
+	color: yellow;
+`;
+

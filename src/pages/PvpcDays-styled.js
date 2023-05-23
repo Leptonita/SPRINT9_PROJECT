@@ -5,8 +5,8 @@ width: 210px;
 height: 80%;
 margin-top: 30px;
 background-image: url(${require(`../assets/img/save-energy-vectorportal.png`)});
-background-position: center 270px;
-background-size: 100%;
+background-position: center 285px;
+background-size: 70%;
 background-repeat: no-repeat;
 `;
 

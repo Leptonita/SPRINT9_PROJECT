@@ -6,12 +6,17 @@ import Home from '../pages/Home';
 import ErrPage from '../pages/ErrPage';
 import Calculadora from '../pages/Calculadora';
 import NavBar from '../components/NavBar';
+import Login from '../components/Login';
 
 const Router = () => (
     <BrowserRouter>
         <Routes>
-            <Route element={<Layout />}>
+            <Route element={<LayoutHome />}>
                 <Route path="/" element={<Home />} />
+                <Route path="login" element={<Login />} />
+            </Route>
+            <Route element={<Layout />}>
+
                 <Route path="pvpc" element={<PvpcCharts />} />
                 <Route exact path="calculadora" element={<PrivateRoute component={Calculadora} />} />
                 <Route path="*" element={<ErrPage />} />
@@ -22,16 +27,22 @@ const Router = () => (
 export default Router;
 
 const Layout = () => {
-
     return (
         <>
             <NavBar />
             <div className='contentGrid'>
-
                 <Outlet />
                 <PvpcDays />
             </div>
+        </>
+    )
+}
 
+const LayoutHome = () => {
+    return (
+        <>
+            <NavBar />
+            <Outlet />
         </>
     )
 }
