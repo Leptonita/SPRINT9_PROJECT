@@ -14,7 +14,7 @@ export const DivCalc = styled.div`
   width: 70vw;
 max-width: 750px;
 border: 1px dotted red;
-margin: 30px 10px 10px 0;
+margin: 30px 10px 10px 10px;
 padding: 30px;
 background-image: url(${require(`../assets/img/earn-money-internet-vectorportal.png`)});
 background-size: 50%;
@@ -57,4 +57,10 @@ ${props => props.isSelected && css`
     color:white;
     background-color: rgba(255, 99, 132, 0.7);
 }
+`;
+
+export const InputCalc = styled.input`
+padding: 5px 5px;
+margin: 3px 0;
+border: 1px solid rgba(0,0,0,0.1);
 `;

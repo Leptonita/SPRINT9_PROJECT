@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DivContent, DivCalc, CenteredDiv, DivBtnCalc, DivResults, BtnCalc } from './Calculadora-styled';
+import { DivContent, DivCalc, CenteredDiv, DivBtnCalc, DivResults, BtnCalc, InputCalc } from './Calculadora-styled';
 import { useMyContext } from '../application/Provider';
 
 const Calculadora = () => {
@@ -33,32 +33,32 @@ const Calculadora = () => {
                 <br />
                 <div>
                     <label htmlFor="device">DISPOSITIVO: </label>
-                    <input type="text" id="device" name="device" onChange={e => setDeviceName(e.target.value)} placeholder="nombre del aparato" />
+                    <InputCalc type="text" id="device" name="device" onChange={e => setDeviceName(e.target.value)} placeholder="nombre del aparato" size={27} />
                 </div>
                 <div>
-                    <label htmlFor="power">Potencia del dispositivo(W): </label>
-                    <input type="text" id="power" name="power" onChange={e => setPowerInput(e.target.value)} placeholder="Potencia en vatios (W)" />
+                    <label htmlFor="power">Potencia del dispositivo (W): </label>
+                    <InputCalc type="text" id="power" name="power" onChange={e => setPowerInput(e.target.value)} placeholder="en vatios (W)" maxLength={5} size={9} />
                 </div>
                 <div>
-                    <label htmlFor="timeConnected">Horas encendido al día: </label>
-                    <input type="text" id="timeConnected" name="timeConnected" onChange={e => setTimeConnectedInput(e.target.value)} placeholder="tiempo en horas" />
+                    <label htmlFor="timeConnected">Horas encendido: </label>
+                    <InputCalc type="text" id="timeConnected" name="timeConnected" onChange={e => setTimeConnectedInput(e.target.value)} placeholder="tiempo" maxLength={2} size={3} />
                 </div>
                 <br />
                 <div><strong>Precio de la electricidad</strong></div>
                 <div>
-                    <label htmlFor="priceElecInput">Según tarifa mercado libre (€/kWh): </label>
-                    <input type="text" id="priceElecInput" name="priceElecInput" onChange={e => setPriceElecInput(e.target.value)} placeholder="precio electricidad" value={priceElecInput} />
+                    <label htmlFor="priceElecInput">Según tarifa mercado libre: </label>
+                    <InputCalc type="text" id="priceElecInput" name="priceElecInput" onChange={e => setPriceElecInput(e.target.value)} placeholder="precio electricidad" value={priceElecInput} maxLength={7} size={5} /> <span> €/kWh</span>
                 </div>
                 <div>
                     Precio PVPC medio: {(state.averagePriceDay / 1000).toFixed(4)} €/kWh
                 </div>
 
-                <div>
+                {/*  <div>
                     Precio PVPC mínimo: {(state.minPriceDay / 1000).toFixed(4)} €/kWh
                 </div>
                 <div>
                     Precio PVPC máximo: {(state.maxPriceDay / 1000).toFixed(4)} €/kWh
-                </div>
+                </div> */}
                 <DivBtnCalc>
                     <BtnCalc onClick={calcConsumptionCost}>calcular</BtnCalc>
                 </DivBtnCalc>
