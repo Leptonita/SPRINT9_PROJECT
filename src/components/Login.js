@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-//import LogoDS from '../assets/img/spaceships-starwars.png';
+//import LogoDS from '../assets/img/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faCircleCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { OverlayLogin, Header, Form, DivInput, Input, Icon, DivBtns, ErrorMessage, BtnsIds, BtnNewAcc, DivTxtPw, DivMessage, DivTxt } from './Login-styled';
 import { useNavigate } from "react-router-dom";
 import { useMyContext } from '../application/Provider';
 import { createItem, getItems } from '../application/api'
+import { NavLink } from 'react-router-dom';
 
 
 const Login = () => {
@@ -238,7 +239,7 @@ const Login = () => {
                             {validPassword ? "" : "se requieren de 8 a 12 caracteres"}
                         </ErrorMessage>
                         <DivTxtPw>
-                            ¿Olvidó su contraseña?
+                            <NavLink to="/updateUser">¿Olvidó su contraseña?</NavLink>
                         </DivTxtPw>
                     </DivInput>
 

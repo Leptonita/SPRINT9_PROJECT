@@ -7,6 +7,8 @@ import ErrPage from '../pages/ErrPage';
 import Calculadora from '../pages/Calculadora';
 import NavBar from '../components/NavBar';
 import Login from '../components/Login';
+import UpdateUserLogin from '../components/UpdateUserLogin';
+import PasswordUpdateUserLogin from '../components/PasswordUpdateUserLogin';
 
 const Router = () => (
     <BrowserRouter>
@@ -14,6 +16,8 @@ const Router = () => (
             <Route element={<LayoutHome />}>
                 <Route path="/" element={<Home />} />
                 <Route path="login" element={<Login />} />
+                <Route path="updateUser" element={<UpdateUserLogin />} />
+                <Route path="pwd/:mail" element={<PasswordUpdateUserLogin />} />
             </Route>
             <Route element={<Layout />}>
 
