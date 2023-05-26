@@ -11,7 +11,7 @@ const PvpcCharts = () => {
     const [state, setState] = useMyContext();
     const [arrObjsDaily, setArrObjDaily] = useState([]);
     const [priceHours, setPriceHours] = useState([0]);
-    const [dayChart, setDayChart] = useState(toDayYMD());
+    const [dayChart, setDayChart] = useState(state.dayChart);
     const [averagePrice, setAveragePrice] = useState(0);
     const [minPrice, setMinPrice] = useState(0);
     const [minPriceHour, setMinPriceHour] = useState(null);
@@ -44,8 +44,8 @@ const PvpcCharts = () => {
 
 
                     {isBarsChart
-                        ? <BarChart pricePerHour={state.priceHours} dayChart={dayChart} />
-                        : <LinesChart pricePerHour={state.priceHours} dayChart={dayChart} />}
+                        ? <BarChart pricePerHour={state.priceHours} dayChart={state.dayChart} />
+                        : <LinesChart pricePerHour={state.priceHours} dayChart={state.dayChart} />}
                 </div>
 
             </DivChart >

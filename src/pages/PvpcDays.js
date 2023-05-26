@@ -56,7 +56,7 @@ const PvpcDays = () => {
 
     useEffect(() => {
         setState({
-            ...state, arrObjsDaily: arrObjsDaily, priceHours: priceHours, averagePriceDay: averagePrice, maxPriceDay: maxPrice, minPriceDay: minPrice
+            ...state, dayChart: dayChart, arrObjsDaily: arrObjsDaily, priceHours: priceHours, averagePriceDay: averagePrice, maxPriceDay: maxPrice, minPriceDay: minPrice
         });
 
     }, [dayChart, priceHours]);
