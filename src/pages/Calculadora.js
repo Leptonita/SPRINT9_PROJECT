@@ -7,13 +7,20 @@ const Calculadora = () => {
     const [deviceName, setDeviceName] = useState("");
     const [powerInput, setPowerInput] = useState(0);
     const [timeConnectedInput, setTimeConnectedInput] = useState(0);
-    const [priceElecInput, setPriceElecInput] = useState(0);
+    const [priceElecInput, setPriceElecInput] = useState(0.15);
     const [eConsumption, setEConsumption] = useState(null);
-    const [eTotalCost, setETotalCost] = useState(null);
+    const [eTotalCost, setETotalCost] = useState(0);
+
+    const [averageTotalCost, setAverageTotalCost] = useState(0);
+    const [minTotalCost, setMinTotalCost] = useState(0);
+    const [maxTotalCost, setMaxTotalCost] = useState(0);
 
     const calcConsumptionCost = () => {
         setEConsumption(powerInput / 1000 * timeConnectedInput);
         setETotalCost(powerInput / 1000 * timeConnectedInput * priceElecInput);
+        setAverageTotalCost(powerInput / 1000 * timeConnectedInput * state.averagePriceDay / 1000);
+        setMinTotalCost(powerInput / 1000 * timeConnectedInput * state.minPriceDay / 1000);
+        setMaxTotalCost(powerInput / 1000 * timeConnectedInput * state.maxPriceDay / 1000);
     }
 
     return (
@@ -33,12 +40,14 @@ const Calculadora = () => {
                     <input type="text" id="power" name="power" onChange={e => setPowerInput(e.target.value)} placeholder="Potencia en vatios (W)" />
                 </div>
                 <div>
-                    <label htmlFor="timeConnected">Tiempo conectado a la corriente (h): </label>
+                    <label htmlFor="timeConnected">Horas encendido al día: </label>
                     <input type="text" id="timeConnected" name="timeConnected" onChange={e => setTimeConnectedInput(e.target.value)} placeholder="tiempo en horas" />
                 </div>
+                <br />
+                <div><strong>Precio de la electricidad</strong></div>
                 <div>
-                    <label htmlFor="priceElecInput">Precio de la electricidad (€/kWh): </label>
-                    <input type="text" id="priceElecInput" name="priceElecInput" onChange={e => setPriceElecInput(e.target.value)} placeholder="precio electricidad" />
+                    <label htmlFor="priceElecInput">Según tarifa mercado libre (€/kWh): </label>
+                    <input type="text" id="priceElecInput" name="priceElecInput" onChange={e => setPriceElecInput(e.target.value)} placeholder="precio electricidad" value={priceElecInput} />
                 </div>
                 <div>
                     Precio PVPC medio: {(state.averagePriceDay / 1000).toFixed(4)} €/kWh
@@ -55,7 +64,13 @@ const Calculadora = () => {
                 </DivBtnCalc>
                 <DivResults>
                     <div>consumo eléctrico: {eConsumption} kW</div>
-                    <div>coste total: {eTotalCost} €</div>
+                    <br />
+                    <div><strong>Coste total</strong></div>
+                    <div>según mercado libre: {eTotalCost.toFixed(3)} €</div>
+
+                    <div>según PVPC medio: {averageTotalCost.toFixed(3)} €</div>
+                    <div>según PVPC mínimo: {minTotalCost.toFixed(3)} €</div>
+                    <div>según PVPC máximo: {maxTotalCost.toFixed(3)} €</div>
                 </DivResults>
             </DivCalc>
         </DivContent>
