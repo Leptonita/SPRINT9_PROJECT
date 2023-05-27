@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 //import LogoDS from '../assets/img/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faCircleCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { OverlayLogin, Header, Form, DivInput, Input, Icon, DivBtns, ErrorMessage, BtnsIds, BtnNewAcc, DivTxtPw, DivMessage, DivTxt } from './Login-styled';
+import { faCircleXmark, faCircleCheck, faXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { OverlayLogin, Header, Form, DivInput, Input, Icon, DivBtns, ErrorMessage, BtnsIds, BtnNewAcc, DivTxtPw, DivMessage, DivTxt, NavLinkOlvido } from './Login-styled';
 import { useNavigate } from "react-router-dom";
 import { useMyContext } from '../application/Provider';
 import { createItem, getItems } from '../application/api'
-import { NavLink } from 'react-router-dom';
-
 
 const Login = () => {
 
@@ -15,10 +13,6 @@ const Login = () => {
     const navigate = useNavigate();
     const [users, setUsers] = useState(() => {
         try {
-            /* getting from localstorage
-            const usersStored = JSON.parse(localStorage.getItem("usersStored")); 
-            */
-
             //getting from firestore db
             const usersStored = getItems();
             return usersStored ? usersStored : [];
@@ -46,13 +40,15 @@ const Login = () => {
 
     const [email, setEmail] = useState(userLS.email);
     const [password, setPassword] = useState(userLS.password);
+    const [typeInput, setTypeInput] = useState("password");
+    const [iconPw, setIconPw] = useState(faEyeSlash);
 
 
     const [validEmail, setValidEmail] = useState(false);
     const [validPassword, setValidPassword] = useState(false);
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [message, setMessage] = useState("Iniciar sesión con tu email y contraseña")
+    const [message, setMessage] = useState("Iniciar sesión en la Calculadora Energética")
 
     useEffect(() => {
 
@@ -83,7 +79,8 @@ const Login = () => {
             const userStored = users.find(us => us.email === inputEmail);
             //if user's email  already exists in users Array in localStorage
             if (userStored) {
-                setUserLS(userStored);
+                /*  setUserLS(userStored); */
+                setUserLS({ "email": userStored.email, "password": userStored.password });
             } else {
                 setUserLS({ ...userLS, "email": inputEmail });
             }
@@ -124,7 +121,8 @@ const Login = () => {
         const userStored = users.find(client => client.email === email);
         //if user's email already exists in users Array in localStorage
         if (userStored) {
-            setUserLS(userStored);
+            // setUserLS(userStored);
+            setUserLS({ "email": userStored.email, "password": userStored.password });
             setMessage("Ya existe un usuario con este correo");
         }
         console.log({ userStored }, 'validPassword', validPassword, 'validEmail', validEmail)
@@ -157,13 +155,13 @@ const Login = () => {
         const userStored = await users.find(client => client.email === email);
         //if user's email  already exists in users Array in localStorage
         if (userStored) {
-            setUserLS(userStored);
+            // setUserLS(userStored);
+            setUserLS({ "email": userStored.email, "password": userStored.password });
 
             if (userStored !== null) {
                 if (userStored.password === password) {
                     console.log({ userStored }, 'logged');
                     setIsLoggedIn(true);
-                    setUserLS(userStored);
                     setMessage('¡Bienvenido!');
                     setState({ ...state, user: email });
                     console.log("email user:", email, ", password: ", password);
@@ -177,6 +175,16 @@ const Login = () => {
             }
         } else {
             setMessage('Correo electrónico no registrado');
+        }
+    }
+
+    const hadleTooglePw = () => {
+        if (typeInput === "password") {
+            setIconPw(faEye);
+            setTypeInput("text");
+        } else {
+            setIconPw(faEyeSlash);
+            setTypeInput("password");
         }
     }
 
@@ -222,16 +230,16 @@ const Login = () => {
                     </DivInput>
 
                     <DivInput>
-                        <Input name="Password" type="password" placeholder="Contraseña" value={password}
+                        <Input name="Password" type={typeInput} placeholder="Contraseña" value={password}
                             onChange={handlePassword}
                             onKeyUp={passwordValidation}
                             onBlur={passwordValidation}
                             isValid={validPassword}
                         />
-                        <Icon valid={validPassword}>
+                        <Icon onClick={hadleTooglePw} valid={validPassword}>
                             {validPassword
-                                ? <FontAwesomeIcon icon={faCircleCheck} style={{ color: "#1f9e34", }} />
-                                : <FontAwesomeIcon icon={faCircleXmark} style={{ color: "#f00000", }} />
+                                ? <FontAwesomeIcon icon={iconPw} style={{ color: "#1f9e34", }} />
+                                : <FontAwesomeIcon icon={iconPw} style={{ color: "#f00000", }} />
                             }
                         </Icon>
 
@@ -239,7 +247,7 @@ const Login = () => {
                             {validPassword ? "" : "se requieren de 8 a 12 caracteres"}
                         </ErrorMessage>
                         <DivTxtPw>
-                            <NavLink to="/updateUser">¿Olvidó su contraseña?</NavLink>
+                            <NavLinkOlvido to="/updateUser">¿Olvidó su contraseña?</NavLinkOlvido>
                         </DivTxtPw>
                     </DivInput>
 

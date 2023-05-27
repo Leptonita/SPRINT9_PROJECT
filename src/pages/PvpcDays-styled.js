@@ -40,9 +40,10 @@ export const DivAveragePrice = styled.div`
 width: 95%;
 text-align: center;
 color: rgb(255, 99, 132);
-
 border: 1px solid rgba(255, 99, 132, 0.2); 
-background-color: rgba(255, 99, 132,0.3);
+background-color: rgba(255,185,29,0.67);
+/* rgba(255, 99, 132,0.3); */
+border-radius: 25px;
 margin: 5px 0.1px;
 padding: 5px 10px;
 `;

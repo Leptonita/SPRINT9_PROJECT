@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-
+import { NavLink } from 'react-router-dom';
 
 
 const colors = {
@@ -63,7 +63,7 @@ align-items: center;
 
 export const Form = styled.form`
 position: relative;
-width: 500px;
+width: 450px;
 border: 2px solid ${colors.greyBorder};
 border-radius: 5px;
 margin-top: 20px;
@@ -180,3 +180,9 @@ font-size: 0.8rem;
 	color: yellow;
 `;
 
+export const NavLinkOlvido = styled(NavLink)`
+color: ${colors.yellowish};
+&:hover {
+    color: white;
+}
+`;

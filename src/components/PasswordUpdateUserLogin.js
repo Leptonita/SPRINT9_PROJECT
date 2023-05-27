@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faCircleCheck, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { OverlayLogin, Header, Form, DivInput, Input, Icon, DivBtns, ErrorMessage, BtnsIds, DivMessage } from './Login-styled';
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
@@ -14,6 +14,8 @@ const PasswordUpdateUserLogin = () => {
     const [email, setEmail] = useState(mail);
     const [password, setPassword] = useState('');
     const [validPassword, setValidPassword] = useState(false);
+    const [typeInput, setTypeInput] = useState("password");
+    const [iconPw, setIconPw] = useState(faEyeSlash);
     const [validEmail, setValidEmail] = useState(false);
     const [isFound, setIsFound] = useState(false);
     const [message, setMessage] = useState("Cambiar contraseña")
@@ -95,6 +97,16 @@ const PasswordUpdateUserLogin = () => {
         }
     }
 
+    const hadleTooglePw = () => {
+        if (typeInput === "password") {
+            setIconPw(faEye);
+            setTypeInput("text");
+        } else {
+            setIconPw(faEyeSlash);
+            setTypeInput("password");
+        }
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
         setEmail('');
@@ -116,16 +128,16 @@ const PasswordUpdateUserLogin = () => {
                     </Header>
                     <DivInput>
 
-                        <Input name="Password" type="password" placeholder="Nueva contraseña" value={password}
+                        <Input name="Password" type={typeInput} placeholder="Nueva contraseña" value={password}
                             onChange={handlePassword}
                             onKeyUp={passwordValidation}
                             onBlur={passwordValidation}
                             isValid={validPassword}
                         />
-                        <Icon valid={validPassword}>
+                        <Icon onClick={hadleTooglePw} valid={validPassword}>
                             {validPassword
-                                ? <FontAwesomeIcon icon={faCircleCheck} style={{ color: "#1f9e34", }} />
-                                : <FontAwesomeIcon icon={faCircleXmark} style={{ color: "#f00000", }} />
+                                ? <FontAwesomeIcon icon={iconPw} style={{ color: "#1f9e34", }} />
+                                : <FontAwesomeIcon icon={iconPw} style={{ color: "#f00000", }} />
                             }
                         </Icon>
 

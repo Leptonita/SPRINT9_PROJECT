@@ -11,7 +11,7 @@ justify-content: space-around;
 `;
 
 export const DivHome = styled.div`
-width: 45vw;
+width: 43vw;
 max-width: 750px;
 border: 1px dotted transparent;
 margin: 10px 10px 0 0;
@@ -29,7 +29,7 @@ export const DivIntro1 = styled.div`
 `;
 
 export const DivImg = styled.div`
-width: 55%;
+width: 57%;
 margin: 50px 0 0 10px;
 @media screen and (max-width: 769px){
     width: 100%;
