@@ -1,5 +1,5 @@
 import { useMatch } from 'react-router-dom';
-import { UlMenu, LiMenu, NavbarLink } from './NavBar-styled';
+import { DivMenu, LiMenu, NavbarLink } from './NavBar-styled';
 import { useState } from 'react';
 import { useMyContext } from '../application/Provider';
 import Login from './Login';
@@ -39,7 +39,7 @@ const NavBarMenu = () => {
     return (
         <>
 
-            <UlMenu>
+            <DivMenu>
                 <NavbarLink
                     style={{
                     }}
@@ -59,7 +59,7 @@ const NavBarMenu = () => {
                     to="/calculadora">
                     <LiMenu> CALCULADORA</LiMenu>
                 </NavbarLink>
-            </UlMenu >
+            </DivMenu >
             {modalState && < Login
                 modalVis={modalState} changeModalVis={setModalState}
                 modalLog={loginIsClicked} changeLogClick={setLoginIsClicked}

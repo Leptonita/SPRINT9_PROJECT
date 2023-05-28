@@ -182,6 +182,8 @@ font-size: 0.8rem;
 
 export const NavLinkOlvido = styled(NavLink)`
 color: ${colors.yellowish};
+transition: all 0.3s ease-in-out;
+
 &:hover {
     color: white;
 }

@@ -236,7 +236,7 @@ const Login = () => {
                             onBlur={passwordValidation}
                             isValid={validPassword}
                         />
-                        <Icon onClick={hadleTooglePw} valid={validPassword}>
+                        <Icon onClick={hadleTooglePw} style={{ cursor: 'pointer' }} valid={validPassword}>
                             {validPassword
                                 ? <FontAwesomeIcon icon={iconPw} style={{ color: "#1f9e34", }} />
                                 : <FontAwesomeIcon icon={iconPw} style={{ color: "#f00000", }} />

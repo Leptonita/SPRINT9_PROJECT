@@ -19,6 +19,11 @@ h1 {
   color: rgb(0, 169, 140)
 }
 
+#menu a.active {
+  color: rgb(85, 148, 48);
+  text-shadow: 0 0 2px #fff0f7, 0 0 3px #00fff2;
+}
+
 .contentGrid {
   display: grid;
   grid-template-columns: 2fr 1fr;

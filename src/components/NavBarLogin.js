@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Login from './Login';
 
-import { UlMenu, LiMenu, NavbarLink } from './NavBar-styled';
+import { DivMenu, LiMenu, NavbarLink } from './NavBar-styled';
 
 import { useMyContext } from '../application/Provider';
 
@@ -64,33 +64,33 @@ const NavBarLogin = () => {
 
             </DivLoginLeft>
 
-            <UlMenu>
+            <DivMenu id='menu'>
                 <NavbarLink
                     style={{
                     }}
                     to="/">
-                    <LiMenu> HOME </LiMenu>
+                    HOME <LiMenu></LiMenu>
                 </NavbarLink>
 
                 <NavbarLink
                     style={{
                     }}
                     to="/pvpc">
-                    <LiMenu> PVPC</LiMenu>
+                    PVPC<LiMenu></LiMenu>
                 </NavbarLink>
                 <NavbarLink
                     style={{
                     }}
                     to="/calculadora">
-                    <LiMenu> CALCULADORA</LiMenu>
+                    CALCULADORA<LiMenu></LiMenu>
                 </NavbarLink>
                 <NavbarLink
                     style={{
                     }}
                     to="/login">
-                    <LiMenu> LOGIN</LiMenu>
+                    LOGIN<LiMenu></LiMenu>
                 </NavbarLink>
-            </UlMenu >
+            </DivMenu >
 
             <DivLoginRight>
                 {/* <DivLogin>
