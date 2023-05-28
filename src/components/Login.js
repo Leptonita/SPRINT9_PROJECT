@@ -215,6 +215,7 @@ const Login = () => {
                             onKeyUp={emailValidation}
                             onBlur={emailValidation}
                             isValid={validEmail}
+                            autoFocus
                         />
 
                         <Icon valid={validEmail}>

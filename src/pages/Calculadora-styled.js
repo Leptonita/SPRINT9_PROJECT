@@ -1,5 +1,15 @@
 import styled, { css } from "styled-components";
 
+const colors = {
+  lines: "#adadad",
+  error: "#db1212",
+  success: "#16d426",
+  greyBorder: "#dd8500",
+  greenish: "rgb(0, 169, 140)",
+  yellowish: "rgb(255, 185, 29)",
+  pinkish: "#d100b9"
+}
+
 export const DivContent = styled.div`
 width: 80%;
 margin: 10px auto;
@@ -7,7 +17,10 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+`;
 
+export const TiText = styled.div`
+color: ${colors.greenish};
 `;
 
 export const DivCalc = styled.div`
@@ -19,7 +32,7 @@ padding: 30px;
 background-image: url(${require(`../assets/img/earn-money-internet-vectorportal.png`)});
 background-size: 50%;
 background-repeat: no-repeat;
-background-position: right bottom;
+background-position: 90% 100px;
 `;
 
 export const CenteredDiv = styled.div`
@@ -29,7 +42,7 @@ justify-content: center;
 `;
 
 export const DivBtnCalc = styled(CenteredDiv)`
-margin-top: 40px;
+margin-top: 30px;
 `;
 
 export const DivResults = styled.div`
@@ -41,9 +54,12 @@ margin: 20px 0;
 `;
 
 export const BtnCalc = styled.button`
-color:rgb(255, 99, 132);
+text-transform: uppercase; 
+font-weight: bolder;
+font-size: 1.2rem;
 border: 1px solid rgb(255, 99, 132);
 border-radius: 30px;
+color:rgb(255, 99, 132);
 background-color: rgba(255, 99, 132, 0.2);
 margin: 5px;
 padding: 5px 10px;
@@ -54,13 +70,62 @@ ${props => props.isSelected && css`
     background-color: rgba(255, 99, 132, 1);
   `}
 &:hover {
-    color:white;
-    background-color: rgba(255, 99, 132, 0.7);
+  color:white;
+    background-color: rgba(255, 99, 132, 0.7); 
+  
+    
 }
 `;
 
 export const InputCalc = styled.input`
-padding: 5px 5px;
+padding: 5px 10px;
 margin: 3px 0;
 border: 1px solid rgba(0,0,0,0.1);
+background-color: rgba(255, 244, 219, 0.249);
+border-radius: 10px;
+&:focus {
+  outline-width: 0;
+ }
+`;
+
+export const ErrorMessage = styled.span`
+border: 1px dotted red;
+padding: 5px;
+margin: 20px;
+
+font-size: 12px;
+color: ${colors.error};
+visibility: hidden;
+${props => !props.valid && css`
+visibility: visible;
+`}
+`;
+
+export const DivResultsCost = styled.div`
+display: flex;
+align-items: center;
+`;
+
+export const DivResultCost = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+color: ${colors.lines};
+font-size: 0.8rem;
+`;
+
+export const Result = styled.div`
+color: white;
+font-size: 1.2rem;
+height: 90px;
+width: 90px;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 10px;
+margin: 15px;
+border-radius: 100%;
+border: 6px dotted #8800ff2a;
+background-color: ${props => props.color};
+background-image: radial-gradient(${props => props.color}, #8800ff30);
 `;

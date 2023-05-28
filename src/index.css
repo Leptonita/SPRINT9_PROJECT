@@ -20,7 +20,7 @@ h1 {
 }
 
 #menu a.active {
-  color: rgb(85, 148, 48);
+  color: #017a66;
   text-shadow: 0 0 2px #fff0f7, 0 0 3px #00fff2;
 }
 
@@ -39,7 +39,6 @@ canvas {
   height: 50vh;
   width: 70vw;
   max-width: 740px;
-
 }
 
 .greyBtn {
