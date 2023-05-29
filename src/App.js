@@ -1,12 +1,13 @@
-import PvpcToday from './components/PvpcToday';
+import Routes from './application/Router';
+import Provider from './application/Provider';
 
 function App() {
   return (
-    <div>
 
-      <PvpcToday />
+    <Provider>
+      <Routes />
+    </Provider>
 
-    </div>
   );
 }
 
