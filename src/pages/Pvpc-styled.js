@@ -1,5 +1,10 @@
 import styled, { css } from "styled-components";
 
+export const DivPvpc = styled.div`
+width: 100%;
+margin-top: 20px;
+`;
+
 export const BtnChartsSel = styled.div`
 width: 80%;
 display: flex;
@@ -84,7 +89,7 @@ padding: 5px 10px;
 export const DivMinPrice = styled(DivAveragePrice)`
 min-width: 280px;
 color:white;
-background-color: rgba(255, 99, 132,0.7);
+background-color: rgb(92, 180, 72);
 `;
 
 export const DivMaxPrice = styled(DivAveragePrice)`
