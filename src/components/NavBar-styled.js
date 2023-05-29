@@ -18,7 +18,7 @@ export const DivBarGridLogin = styled.div`
 display: grid;
 
 height: 105px;
-grid-template-columns: 1fr 1fr 10fr 1fr ;
+grid-template-columns: 1fr 1fr 7fr 1fr ;
 align-items: center;
 padding: 10px 30px;
 background-color: rgba(255,185,29,0.67);
@@ -32,6 +32,10 @@ flex-direction: column;
 justify-content: space-between;
 max-width: 100vw;
   }
+@media(min-width: 1900px) {
+grid-template-columns: 1fr 1fr 4fr 1fr ;
+  }
+
 `;
 export const DivImg = styled.div`
 display: flex;
@@ -154,7 +158,7 @@ list-style-type: none;
 `;
 
 export const NavbarLink = styled(NavLink)`
-padding: 15px 25px;
+padding: 15px 17px;
 font-size: 1.2rem;
 text-decoration: none;
 color:${greeny};
@@ -177,21 +181,16 @@ padding: 15px 5px;
 
 export const DivUser = styled.div`
 font-size: 0.7rem;
-display: flex;
-flex-flow: row wrap;
-text-align: center;
-align-items: center;
-margin-right: 20px;
-margin-left: auto;
-  margin-top: -60px;
+position: absolute;
+right: 2%;
+top: 79px;
+text-align: right;
 color: #555555bb;
 
-@media(max-width: 769px) {
+ @media(max-width: 768px) {
   display: none;
-}
-@media(max-width: 420px) {
-  display: none;
-}
+} /**/
+
 `;
 export const DivUserMob = styled.div`
 font-size: 0.7rem;

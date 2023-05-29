@@ -57,7 +57,8 @@ const Calculadora = () => {
                     <InputCalc type="text" id="device" name="device" onChange={e => setDeviceName(e.target.value)} placeholder="nombre del aparato" size={27} />
                 </DivInputs>
                 <DivInputs>
-                    <label htmlFor="power">Potencia (W): </label>
+                    <label htmlFor="power">
+                        <strong> Potencia (W): </strong></label>
                     <InputCalc type="text" id="power" name="power" onChange={e => setPowerInput(() => commaToDot(e.target.value))} placeholder="en vatios (W)" maxLength={7} size={9}
                         autoFocus /> <FontAwesomeIcon onClick={() => setViewDevices(true)} icon={faCircleInfo} />
                     {viewDevices && <Devices setViewDevices={setViewDevices} />}
@@ -66,7 +67,8 @@ const Calculadora = () => {
                     </ErrorMessage>
                 </DivInputs>
                 <DivInputs>
-                    <label htmlFor="timeConnected">Horas encendido: </label>
+                    <label htmlFor="timeConnected">
+                        <strong> Horas encendido: </strong></label>
                     <InputCalc type="text" id="timeConnected" name="timeConnected" onChange={e => setTimeConnectedInput(() => commaToDot(e.target.value))} placeholder="tiempo" maxLength={4} size={3} />
 
                     <ErrorMessage valid={validTime}>
@@ -77,7 +79,8 @@ const Calculadora = () => {
                 <br />
                 <TiText><strong>Precio de la electricidad</strong></TiText>
                 <DivInputs>
-                    <label htmlFor="priceElecInput">Precio mercado libre: </label>
+                    <label htmlFor="priceElecInput">
+                        <strong> Precio mercado libre: </strong></label>
                     <InputCalc type="text" id="priceElecInput" name="priceElecInput" onChange={e => setPriceElecInput(() => commaToDot(e.target.value))} placeholder="precio electricidad" value={priceElecInput} maxLength={7} size={5} /><span>€/kWh</span>
                 </DivInputs>
                 <DivInputs>

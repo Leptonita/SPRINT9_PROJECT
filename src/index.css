@@ -71,3 +71,19 @@ canvas {
 
 
 }
+
+@media(min-width: 1900px) {
+  .contentGrid {
+    max-width: 1920px;
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+  }
+}
+
+@media(min-width: 2000px) {
+  .contentGrid {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 7fr 4fr;
+  }
+}

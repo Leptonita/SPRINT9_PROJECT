@@ -36,7 +36,7 @@ padding: 30px;
 background-image: url(${require(`../assets/img/earn-money-internet-vectorportal.png`)});
 background-size: 40%;
 background-repeat: no-repeat;
-background-position: 95% 265px;
+background-position: 95% 290px;
 @media screen and (max-width: 768px){
   width: 100%;
     flex-direction: column;
@@ -138,10 +138,12 @@ visibility: visible;
 export const DivResultsCost = styled.div`
 display: flex;
 align-items: center;
-@media screen and (max-width: 768px){
+@media screen and (max-width: 769px){
   flex-wrap: wrap;
   justify-content: center;
-    width: 99%;
+    width: 98%;
+    max-width: 300px;
+    margin: 0 auto;
 }
 `;
 
@@ -161,7 +163,7 @@ width: 90px;
 display: flex;
 justify-content: center;
 align-items: center;
-padding: 3px 10px;
+padding: 3px 7px;
 margin: 14px;
 border-radius: 100%;
 border: 6px dotted #8800ff2a;
