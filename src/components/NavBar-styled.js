@@ -180,10 +180,8 @@ margin-left: auto;
   margin-top: -60px;
 color: #555555bb;
 
-@media(max-width: 768px) {
-  margin-top: -30px;
-  margin-right: 3px;
-  font-size: 0.4rem;
+@media(max-width: 769px) {
+  display: none;
 }
 @media(max-width: 420px) {
   display: none;

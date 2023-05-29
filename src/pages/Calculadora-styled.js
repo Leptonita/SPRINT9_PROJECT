@@ -21,6 +21,10 @@ align-items: center;
 
 export const TiText = styled.div`
 color: ${colors.greenish};
+@media screen and (max-width: 768px){
+  text-align: center;
+    width: 99%;
+}
 `;
 
 export const DivCalc = styled.div`
@@ -32,8 +36,17 @@ padding: 30px;
 background-image: url(${require(`../assets/img/earn-money-internet-vectorportal.png`)});
 background-size: 50%;
 background-repeat: no-repeat;
-background-position: 90% 100px;
+background-position: 90% 125px;
+@media screen and (max-width: 768px){
+  width: 100%;
+    flex-direction: column;
+justify-content: center;
+align-items: center;
+background-position: 90% 0px;
+}
 `;
+
+
 
 export const CenteredDiv = styled.div`
 width: 100%;
@@ -51,6 +64,11 @@ display: flex;
 flex-direction: column;
 align-items: flex-start;
 margin: 20px 0;
+@media screen and (max-width: 768px){
+  align-items: center;
+    width: 99%;
+}
+
 `;
 
 export const BtnCalc = styled.button`
@@ -77,21 +95,36 @@ ${props => props.isSelected && css`
 }
 `;
 
+export const DivInputs = styled.div`
+display: flex;
+align-items: center;
+margin: 10px 0;
+@media screen and (max-width: 768px){
+  flex-direction: column;
+  align-items: center;
+    width: 99%;
+}
+`;
+
 export const InputCalc = styled.input`
 padding: 5px 10px;
-margin: 3px 0;
+margin: 3px 5px;
 border: 1px solid rgba(0,0,0,0.1);
 background-color: rgba(255, 244, 219, 0.249);
 border-radius: 10px;
+
 &:focus {
   outline-width: 0;
+  border-color:#ff0000;
+  border: 2px solid ${colors.greenish};
+  background-color: rgba(219, 255, 223, 0.3);
  }
 `;
 
 export const ErrorMessage = styled.span`
 border: 1px dotted red;
 padding: 5px;
-margin: 20px;
+margin: 0 10px;
 
 font-size: 12px;
 color: ${colors.error};
@@ -104,6 +137,11 @@ visibility: visible;
 export const DivResultsCost = styled.div`
 display: flex;
 align-items: center;
+@media screen and (max-width: 768px){
+  flex-wrap: wrap;
+  justify-content: center;
+    width: 99%;
+}
 `;
 
 export const DivResultCost = styled.div`
@@ -123,9 +161,9 @@ display: flex;
 justify-content: center;
 align-items: center;
 padding: 10px;
-margin: 15px;
+margin: 14px;
 border-radius: 100%;
 border: 6px dotted #8800ff2a;
 background-color: ${props => props.color};
-background-image: radial-gradient(${props => props.color}, #8800ff30);
+background-image: radial-gradient(${props => props.color}, #8800ff25);
 `;

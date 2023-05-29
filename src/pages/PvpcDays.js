@@ -123,7 +123,7 @@ const PvpcDays = () => {
                 <BtnDays name="3" isSelected={isActive[3]} onClick={(e) => calcDay(twoDaysAgo, e)} >{twoDaysAgo}</BtnDays>
                 <BtnDays name="2" isSelected={isActive[2]} onClick={(e) => calcDay(oneDaysAgo, e)} >{oneDaysAgo}</BtnDays>
                 <BtnDays name="1" isSelected={isActive[1]} onClick={(e) => calcDay((e) => toDayYMD(), e)} >Hoy</BtnDays>
-                {nowTime > 20.27 && <BtnDays name="0" isSelected={isActive[0]} onClick={(e) => calcDay((e) => tomorroyYMD(), e)}>Mañana</BtnDays>}
+                {nowTime > 20.50 && <BtnDays name="0" isSelected={isActive[0]} onClick={(e) => calcDay((e) => tomorroyYMD(), e)}>Mañana</BtnDays>}
 
             </DivBtnDay>
             <br />

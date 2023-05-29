@@ -22,7 +22,7 @@ background: rgba(114, 114, 114, 0.3);
 */
 top: 0;
 left: 0;
-width: 90vw;
+width: 100vw;
 display: flex;
 justify-content:  center; /**/
 `;

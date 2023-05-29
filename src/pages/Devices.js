@@ -13,6 +13,10 @@ export const Devices = ({ setViewDevices }) => {
                 </DivCloseIcon>
 
                 <div onClick={(e) => e.stopPropagation()}>
+                    <div>
+                        Revise la etiqueta de eficiencia energética de su dispositivo para conocer su potencia.<br />
+                        <br />
+                    </div>
                     <strong> La potencia de los aparatos más habituales:</strong>
                     <br />
                     <br />
@@ -49,13 +53,8 @@ export const Devices = ({ setViewDevices }) => {
                     Ventilador: 100 W.
                     <br />
                     Vitrocerámica: 1.500 - 2.500 W.
+                </div>
 
-                    <br />
-                    <br />
-                </div>
-                <div>
-                    Revise la etiqueta de eficiencia energética de su dispositivo para conocer su potencia.
-                </div>
             </DivDevices>
 
         </OverlayD>

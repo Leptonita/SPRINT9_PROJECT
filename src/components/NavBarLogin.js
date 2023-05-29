@@ -30,21 +30,26 @@ const NavBarLogin = () => {
                         <NavbarLink
                             style={{
                             }}
-                            to="/">
+                            to="/" onClick={() => { setIsActive(!isActive) }}>
                             <LiMenu>HOME </LiMenu>
                         </NavbarLink>
 
                         <NavbarLink
                             style={{
                             }}
-                            to="/pvpc">
+                            to="/pvpc" onClick={() => { setIsActive(!isActive) }}>
                             <LiMenu>PVPC</LiMenu>
                         </NavbarLink>
                         <NavbarLink
                             style={{
                             }}
-                            to="/calculadora">
+                            to="/calculadora" onClick={() => { setIsActive(!isActive) }}>
                             <LiMenu>CALCULADORA</LiMenu>
+                        </NavbarLink>
+                        <NavbarLink
+                            style={{}}
+                            to="/login" onClick={() => { setIsActive(!isActive) }}>
+                            <LiMenu>LOGIN</LiMenu>
                         </NavbarLink>
                         <br /><br />
                     </DivLoginLeftLinks>
