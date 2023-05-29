@@ -15,7 +15,7 @@ const UpdateUserLogin = () => {
     const [validEmail, setValidEmail] = useState(false);
 
     const [isFound, setIsFound] = useState(false);
-    const [message, setMessage] = useState("Cambiar contraseña")
+    const [message, setMessage] = useState("Cambiar contraseña de la cuenta:")
 
     useEffect(() => {
         getUserData();

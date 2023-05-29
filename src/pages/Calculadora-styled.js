@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 const colors = {
-  lines: "#adadad",
+  lines: "#a6a5a5",
   error: "#db1212",
   success: "#16d426",
   greyBorder: "#dd8500",
@@ -34,9 +34,9 @@ border: 1px dotted red;
 margin: 30px 10px 10px 10px;
 padding: 30px;
 background-image: url(${require(`../assets/img/earn-money-internet-vectorportal.png`)});
-background-size: 50%;
+background-size: 40%;
 background-repeat: no-repeat;
-background-position: 90% 125px;
+background-position: 95% 265px;
 @media screen and (max-width: 768px){
   width: 100%;
     flex-direction: column;
@@ -75,17 +75,18 @@ export const BtnCalc = styled.button`
 text-transform: uppercase; 
 font-weight: bolder;
 font-size: 1.2rem;
-border: 1px solid rgb(255, 99, 132);
+border: 3px solid rgb(255, 99, 132);
 border-radius: 30px;
 color:rgb(255, 99, 132);
-background-color: rgba(255, 99, 132, 0.2);
-margin: 5px;
-padding: 5px 10px;
+background-image: linear-gradient(rgba(255, 99, 132, 0.2), rgba(255, 99, 132, 0.1), rgba(255, 99, 132, 0.3));
+margin-bottom: 5px;
+padding: 7px 12px;
 cursor: pointer;
 transition: all 0.5s ease;
 ${props => props.isSelected && css`
     color:white;
     background-color: rgba(255, 99, 132, 1);
+    background-image: linear-gradient(rgba(255, 99, 132, 0.7), rgba(255, 255, 255, 0.1), rgba(255, 99, 132, 1));
   `}
 &:hover {
   color:white;
@@ -149,18 +150,18 @@ display: flex;
 flex-direction: column;
 align-items: center;
 color: ${colors.lines};
-font-size: 0.8rem;
+font-size: 0.79rem;
 `;
 
 export const Result = styled.div`
 color: white;
-font-size: 1.2rem;
+font-size: 1.1rem;
 height: 90px;
 width: 90px;
 display: flex;
 justify-content: center;
 align-items: center;
-padding: 10px;
+padding: 3px 10px;
 margin: 14px;
 border-radius: 100%;
 border: 6px dotted #8800ff2a;

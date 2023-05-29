@@ -17,12 +17,13 @@ const NavBar = () => {
 
     return (
         <DivHeader>
-            <NavBarLogin
-                loginIsClicked={!logged} signupIsClicked={!logged} modalState={!logged}
+            <NavBarLogin />
+            {/* 
+            loginIsClicked={!logged} signupIsClicked={!logged} modalState={!logged}
                 setLoginIsClicked={setLoginIsClicked} setSignupIsClicked={setSignupIsClicked}
                 setModalState={setModalState}
-            />
-            {/* <NavBarMenu loginIsClicked={!logged} signupIsClicked={!logged} modalState={!logged} git
+            
+            <NavBarMenu loginIsClicked={!logged} signupIsClicked={!logged} modalState={!logged} git
                 setLoginIsClicked={setLoginIsClicked} setSignupIsClicked={setSignupIsClicked}
                 setModalState={setModalState}
             /> */}

@@ -16,6 +16,7 @@ color: #adadad;
 
 export const DivBarGridLogin = styled.div`
 display: grid;
+
 height: 105px;
 grid-template-columns: 1fr 1fr 10fr 1fr ;
 align-items: center;
@@ -29,7 +30,7 @@ box-shadow: 2px 2px 9px gray;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-
+max-width: 100vw;
   }
 `;
 export const DivImg = styled.div`
@@ -79,6 +80,7 @@ display: flex;
 flex-direction: column;
 justify-content: flex-end;
 align-content: center;
+margin-right: 5px;
 
 @media(max-width: 768px) {
   align-self: start;
@@ -153,6 +155,7 @@ list-style-type: none;
 
 export const NavbarLink = styled(NavLink)`
 padding: 15px 25px;
+font-size: 1.2rem;
 text-decoration: none;
 color:${greeny};
 transition: all 0.2s ease -in -out;
@@ -167,6 +170,9 @@ transition: all 0.2s ease -in -out;
   color: ${pinky};
   box-shadow: 2px 2p 2px #fffaded2;
 };
+@media(max-width: 768px) {
+padding: 15px 5px;
+  }
 `;
 
 export const DivUser = styled.div`
@@ -186,4 +192,10 @@ color: #555555bb;
 @media(max-width: 420px) {
   display: none;
 }
+`;
+export const DivUserMob = styled.div`
+font-size: 0.7rem;
+text-align: right;
+margin-right:27px ;
+margin-top: -15px;
 `;

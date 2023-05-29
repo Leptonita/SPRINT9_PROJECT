@@ -26,11 +26,7 @@ const PvpcToday = () => {
     const [fourDaysAgo, setFourDaysAgo] = useState(() => beforeDayYMD(4));
 
     const nowTime = Number(nowHour()) + Number(nowMinutes() / 60);
-    /* const averagePriceDay = () => {
-        const totalSum = priceHours.reduce((total, price) => total + price);
-        setAveragePrice(totalSum / 24);
-        //setState({ ...state, averagePriceDay: averagePrice });
-    } */
+
 
     const URL_REE = `https://apidatos.ree.es/es/datos/mercados/precios-mercados-tiempo-real?start_date=${dayChart}T00:00&end_date=${dayChart}T23:59&time_trunc=hour&geo_limit=peninsular&geo_ids=8741`
 

@@ -14,12 +14,12 @@ const colors = {
 
 //Web info modal
 export const OverlayLogin = styled.div`
- /* position: fixed;
+ /*height: 80vh;*/ position: fixed;
 z-index: 10; 
-height: 100vh;
-background: rgba(114, 114, 114, 0.3);
+margin-top: 115px;
+background: rgba(255, 255, 255, 1);
 
-*/
+
 top: 0;
 left: 0;
 width: 100vw;

@@ -22,7 +22,7 @@ font-size: 0.87rem;
 border-radius: 5px;
 color: #006655;
 @media screen and (max-width: 768px){
-      width: 95%;
+      width: 310px;
 }
 `;
 

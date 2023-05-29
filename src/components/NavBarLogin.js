@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import logo from '../assets/img/emwhat.png';
-import { DivBarGridLogin, DivImg, LogoImg, DivLoginRight, DivLogin, DivLoginLeft, DivLoginLeftLinks, LinkIds, SpanLogin, MenuMobile, DivUser } from './NavBar-styled';
+import { DivBarGridLogin, DivImg, LogoImg, DivLoginRight, DivLogin, DivLoginLeft, DivLoginLeftLinks, MenuMobile, DivUser, DivUserMob } from './NavBar-styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import Login from './Login';
+
 
 import { DivMenu, LiMenu, NavbarLink } from './NavBar-styled';
 
@@ -46,11 +46,16 @@ const NavBarLogin = () => {
                             to="/calculadora" onClick={() => { setIsActive(!isActive) }}>
                             <LiMenu>CALCULADORA</LiMenu>
                         </NavbarLink>
+
+
                         <NavbarLink
-                            style={{}}
+                            style={{ textAlign: "right", }}
                             to="/login" onClick={() => { setIsActive(!isActive) }}>
                             <LiMenu>LOGIN</LiMenu>
                         </NavbarLink>
+                        <DivUserMob>
+                            {userLogged ? "usuario: " + userLogged : ""}
+                        </DivUserMob>
                         <br /><br />
                     </DivLoginLeftLinks>
                 )}

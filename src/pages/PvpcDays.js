@@ -31,18 +31,20 @@ const PvpcDays = () => {
         async function startFetching(url) {
             try {
                 const response = await fetch(url);
+                //console.log({ response })
                 if (!response.ok) {
                     throw new Error("problemas de conexión. 'Network response was not ok' ");
+                } else {
+                    const data = await response.json();
+                    const arrObjsDailyPricesHours = data.included[0].attributes.values
+                    //console.log({ arrObjsDailyPricesHours });
+                    hourOfPrice(arrObjsDailyPricesHours);
+                    setArrObjDaily(() => [...arrObjsDailyPricesHours]);
+                    const pricePerHour = arrObjsDailyPricesHours.map(objHour => Number(objHour.value));
+                    setPriceHours(pricePerHour);
+                    const totalSum = pricePerHour.reduce((total, price) => total + price);
+                    setAveragePrice(totalSum / 24);
                 }
-                const data = await response.json();
-                const arrObjsDailyPricesHours = data.included[0].attributes.values
-                //console.log({ arrObjsDailyPricesHours });
-                hourOfPrice(arrObjsDailyPricesHours);
-                setArrObjDaily(() => [...arrObjsDailyPricesHours]);
-                const pricePerHour = arrObjsDailyPricesHours.map(objHour => Number(objHour.value));
-                setPriceHours(pricePerHour);
-                const totalSum = pricePerHour.reduce((total, price) => total + price);
-                setAveragePrice(totalSum / 24);
             }
             catch (err) { console.log('error: ', err.message) }
         }
@@ -129,13 +131,13 @@ const PvpcDays = () => {
             <br />
             <DivAveragePrice><strong>Precio medio:</strong>
                 <br />
-                {averagePrice.toFixed(2)} €/MWh </DivAveragePrice>
+                {averagePrice.toFixed(2).replace(/\./g, ",")} €/MWh </DivAveragePrice>
             <DivMinPrice>Mínimo de <strong>{minPriceHour}h</strong>:
                 <br />
-                {minPrice.toFixed(2)} €/MWh </DivMinPrice>
+                {minPrice.toFixed(2).replace(/\./g, ",")} €/MWh </DivMinPrice>
             <DivMaxPrice>Máximo de <strong>{maxPriceHour}h</strong>:
                 <br />
-                {maxPrice.toFixed(2)} €/MWh </DivMaxPrice>
+                {maxPrice.toFixed(2).replace(/\./g, ",")} €/MWh </DivMaxPrice>
         </DivPvpcDays >
     )
 }
