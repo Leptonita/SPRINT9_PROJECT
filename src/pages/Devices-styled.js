@@ -27,8 +27,8 @@ display: flex;
 justify-content: flex-end;
 color: rgb(0, 169, 140);
 margin-bottom: 10px;
-margin-right: -35px;
-margin-top: -30px;
+margin-right: -30px;
+margin-top: -25px;
 `;
 
 export const DivNota = styled.div`

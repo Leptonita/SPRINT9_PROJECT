@@ -19,6 +19,8 @@ padding: 30px 0;
 background-color: rgba(255, 255, 255, 0.7);
 @media screen and (max-width: 769px){
     font-size: 0.9rem;
+    width: 85%;
+    padding: 30px 0 5px 0;
 }
 `;
 

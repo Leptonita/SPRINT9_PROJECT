@@ -9,7 +9,7 @@ export const Devices = ({ setViewDevices }) => {
 
             <DivDevices>
                 <DivCloseIcon>
-                    <FontAwesomeIcon onClick={() => setViewDevices(false)} icon={faCircleXmark} size="2xl" style={{ cursor: "pointer", }} />
+                    <FontAwesomeIcon onClick={() => setViewDevices(false)} icon={faCircleXmark} size="2xl" style={{ cursor: "pointer", "--fa-primary-color": "#9fdfa7", "--fa-secondary-color": "rgb(0, 169, 140)", }} />
                 </DivCloseIcon>
 
                 <div onClick={(e) => e.stopPropagation()}>

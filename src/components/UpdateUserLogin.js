@@ -71,7 +71,7 @@ const UpdateUserLogin = () => {
                 console.log("email user:", email);
             } else {
                 //hay que recoger error conexion FS
-                setMessage('Hay un problema');
+                setMessage('Hay un problema, email no encontrado ');
             }
         } else {
             setMessage('Correo electrónico no registrado');

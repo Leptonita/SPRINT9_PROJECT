@@ -8,6 +8,9 @@ background-image: url(${require(`../assets/img/save-energy-vectorportal.png`)});
 background-position: center 285px;
 background-size: 70%;
 background-repeat: no-repeat;
+@media screen and (max-width: 768px){
+    width: 75%;
+}
 `;
 
 export const DivBtnDay = styled.div`
@@ -46,6 +49,7 @@ background-color: rgba(255,185,29,0.67);
 border-radius: 25px;
 margin: 5px 0.1px;
 padding: 5px 10px;
+
 `;
 
 export const DivMinPrice = styled(DivAveragePrice)`

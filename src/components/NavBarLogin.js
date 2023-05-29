@@ -15,105 +15,87 @@ const NavBarLogin = () => {
     const userLogged = state.user;
 
     const [isActive, setIsActive] = useState(false);
-    const [loginIsClicked, setLoginIsClicked] = useState(false);
-    const [signupIsClicked, setSignupIsClicked] = useState(false);
-    const [modalState, setModalState] = useState(false);
 
-    const showModalLogin = () => {
-        setLoginIsClicked((c) => !c);
-        setModalState((m) => !m);
-        setSignupIsClicked(false);
-    }
-
-    const showModalSignUp = () => {
-        setSignupIsClicked((c) => !c);
-        setModalState((m) => !m);
-        setLoginIsClicked(false);
-    }
 
     return (
 
         <DivBarGridLogin>
-            <DivImg>
-                <LogoImg src={logo} alt="eMWcalc" />
-            </DivImg>
+
             <DivLoginLeft>
-                <MenuMobile>
+                <MenuMobile className='menumobile'>
                     <FontAwesomeIcon onClick={() => { setIsActive(!isActive) }} icon={faBars} size="2xl" style={{ color: "#ffea00", }} />
                 </MenuMobile>
                 {isActive && (
                     <DivLoginLeftLinks>
-                        <br />
-                        <p onClick={showModalLogin}><LinkIds>LOGIN</LinkIds> </p>
-                        {loginIsClicked &&
-                            <Login
-                                modalVis={modalState} changeModalVis={setModalState}
-                                modalLog={loginIsClicked} changeLogClick={setLoginIsClicked}
-                                modalSign={signupIsClicked} changeSignClick={setSignupIsClicked}
-                            />}
-                        <br />
-                        <p onClick={showModalSignUp}><LinkIds>SIGN UP</LinkIds> </p>
-                        {signupIsClicked &&
-                            <Login
-                                modalVis={modalState} changeModalVis={setModalState}
-                                modalLog={loginIsClicked} changeLogClick={setLoginIsClicked}
-                                modalSign={signupIsClicked} changeSignClick={setSignupIsClicked}
-                            />}
+                        <NavbarLink
+                            style={{
+                            }}
+                            to="/">
+                            <LiMenu>HOME </LiMenu>
+                        </NavbarLink>
+
+                        <NavbarLink
+                            style={{
+                            }}
+                            to="/pvpc">
+                            <LiMenu>PVPC</LiMenu>
+                        </NavbarLink>
+                        <NavbarLink
+                            style={{
+                            }}
+                            to="/calculadora">
+                            <LiMenu>CALCULADORA</LiMenu>
+                        </NavbarLink>
+                        <br /><br />
                     </DivLoginLeftLinks>
                 )}
 
             </DivLoginLeft>
+
+            <DivImg>
+                <LogoImg src={logo} alt="eMWcalc" />
+            </DivImg>
 
             <DivMenu id='menu'>
                 <NavbarLink
                     style={{
                     }}
                     to="/">
-                    HOME <LiMenu></LiMenu>
+                    HOME
                 </NavbarLink>
 
                 <NavbarLink
                     style={{
                     }}
                     to="/pvpc">
-                    PVPC<LiMenu></LiMenu>
+                    PVPC
                 </NavbarLink>
                 <NavbarLink
                     style={{
                     }}
                     to="/calculadora">
-                    CALCULADORA<LiMenu></LiMenu>
+                    CALCULADORA
                 </NavbarLink>
                 <NavbarLink
                     style={{
                     }}
                     to="/login">
-                    LOGIN<LiMenu></LiMenu>
+                    LOGIN
                 </NavbarLink>
             </DivMenu >
 
             <DivLoginRight>
-                {/* <DivLogin>
-                    <SpanLogin onClick={showModalLogin}>LOG IN </SpanLogin>
-                    {loginIsClicked &&
-                        <Login
-                            modalVis={modalState} changeModalVis={setModalState}
-                            modalLog={loginIsClicked} changeLogClick={setLoginIsClicked}
-                            modalSign={signupIsClicked} changeSignClick={setSignupIsClicked}
-                        />}
-
-                    <SpanLogin onClick={showModalSignUp}> SIGN UP</SpanLogin>
-                    {signupIsClicked &&
-                        <Login
-                            modalVis={modalState} changeModalVis={setModalState}
-                            modalLog={loginIsClicked} changeLogClick={setLoginIsClicked}
-                            modalSign={signupIsClicked} changeSignClick={setSignupIsClicked}
-                        />}
-                </DivLogin> */}
+                {/* <DivLogin></DivLogin>
+                <NavbarLink
+                    style={{ listStyle: "none", }}
+                    to="/login">
+                    <LiMenu>LOGIN</LiMenu>
+                </NavbarLink>
+*/}
                 <DivUser> {userLogged ? "usuario: " + userLogged : ""}</DivUser>
             </DivLoginRight>
             <br />
-        </DivBarGridLogin>
+        </DivBarGridLogin >
     )
 }
 export default NavBarLogin;

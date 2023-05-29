@@ -52,14 +52,15 @@ const Calculadora = () => {
                 <br />
                 <div>
                     <label htmlFor="device">DISPOSITIVO: </label>
-                    <InputCalc type="text" id="device" name="device" onChange={e => setDeviceName(e.target.value)} placeholder="nombre del aparato" size={27} autoFocus />
+                    <InputCalc type="text" id="device" name="device" onChange={e => setDeviceName(e.target.value)} placeholder="nombre del aparato" size={27} />
                 </div>
                 <div>
                     <label htmlFor="power">Potencia (W): </label>
-                    <InputCalc type="text" id="power" name="power" onChange={e => setPowerInput(e.target.value)} placeholder="en vatios (W)" maxLength={5} size={9} /> <FontAwesomeIcon onClick={() => setViewDevices(true)} icon={faCircleInfo} />
+                    <InputCalc type="text" id="power" name="power" onChange={e => setPowerInput(e.target.value)} placeholder="en vatios (W)" maxLength={5} size={9}
+                        autoFocus /> <FontAwesomeIcon onClick={() => setViewDevices(true)} icon={faCircleInfo} />
                     {viewDevices && <Devices setViewDevices={setViewDevices} />}
                     <ErrorMessage valid={validPotencia}>
-                        {validPotencia ? "" : "¿Cuál es la potencia en vatios (W) del equipo?"}
+                        {validPotencia ? "" : "¿Cuál es la potencia del equipo?"}
                     </ErrorMessage>
                 </div>
                 <div>
@@ -67,7 +68,7 @@ const Calculadora = () => {
                     <InputCalc type="text" id="timeConnected" name="timeConnected" onChange={e => setTimeConnectedInput(e.target.value)} placeholder="tiempo" maxLength={2} size={3} />
 
                     <ErrorMessage valid={validTime}>
-                        {validTime ? "" : "¿Cuantas horas está el dispositivo en funcionamiento?"}
+                        {validTime ? "" : "¿Cuantas horas está en funcionamiento?"}
                     </ErrorMessage>
                 </div>
                 <br />

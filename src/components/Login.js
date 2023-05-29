@@ -263,12 +263,6 @@ const Login = () => {
                             ¿Aún no tiene una cuenta gratuita?</DivTxt>
                         <BtnNewAcc onClick={handleSignup}> Cree su cuenta </BtnNewAcc>
 
-
-
-                        {/* {isLoggedIn && <div>user is logged in</div>}
-                             {isLoggedIn && <div>number of users created: {users.length} </div>} 
-
-                            {!isLoggedIn && <div>no logged yet, ...</div>}*/}
                     </DivBtns>
                 </Form>
             </OverlayLogin >
